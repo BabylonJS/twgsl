@@ -7,6 +7,9 @@ extern "C"
 {
     void test();
     void spirv_to_wgsl(const void* bytes, int length);
+    
+    // Callback to JavaScript
+    extern void return_string(const void* data, int length);
 }
 
 namespace
@@ -170,4 +173,6 @@ void spirv_to_wgsl(const void* bytes, int length) {
     auto result = tint::writer::wgsl::Generate(&program, options);
     
     std::cout << result.wgsl << std::endl;
+
+    return_string(result.wgsl.data(), result.wgsl.size());
 }
