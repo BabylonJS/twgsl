@@ -6,7 +6,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: Checkout Repo
-        run: git clone https://github.com/BabylonJS/twgsl.git
+        uses: actions/checkout@v2.3.3
       - name: Update submodule
         run: |
              pwd
