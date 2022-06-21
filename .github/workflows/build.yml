@@ -1,0 +1,46 @@
+name: Build TWGSL
+on: workflow_dispatch
+  
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Repo
+        run: git clone https://github.com/BabylonJS/twgsl.git
+      - name: Update submodule
+        run: |
+             pwd
+             cd twgsl
+             git submodule update --init --recursive
+             git submodule update --remote --merge
+      - name: Clone/install emsdk
+        run: |
+             pwd
+             git clone https://github.com/emscripten-core/emsdk.git
+             cd emsdk
+             ./emsdk install latest
+      - name: Clone DepotTools
+        run: |
+             pwd
+             git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+      - name: Build
+        run: |
+             pwd
+             cd emsdk
+             ./emsdk activate latest
+             source "emsdk.sh"
+             cd ../depot-tools
+             export PATH=$(pwd):$PATH
+             cd ..
+             pwd
+             cd twgsl/Dependencies/Tint
+             cp standalone.gclient .gclient
+             gclient sync
+             cd ../../..
+             mkdir twgsl_build
+             cd twgsl_build
+             emcmake cmake ../twgsl
+             emmake make twgsl
+             ls -a Core/twgsl
+        
+       
