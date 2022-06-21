@@ -42,8 +42,8 @@ jobs:
       - name: Create artifact directory
         run: |
              mkdir artifact
-             cp twgsl/Core/twgsl/twgsl.js artifact
-             cp twgsl/Core/twgsl/twgsl.wasm artifact
+             cp twgsl_build/Core/twgsl/twgsl.js artifact
+             cp twgsl_build/Core/twgsl/twgsl.wasm artifact
       - name: Upload TWGSL artifact Folder
         uses: actions/upload-artifact@v2
         with:
