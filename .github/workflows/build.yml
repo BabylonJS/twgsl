@@ -40,13 +40,13 @@ jobs:
              #emmake make twgsl
              ls -l -a Core/twgsl
              pwd
-             mkdir artifact
+             mkdir ../twgsl/artifact
              echo a > ./Core/twgsl/twgsl.js
              echo a > ./Core/twgsl/twgsl.wasm
-             cp ./Core/twgsl/twgsl.js ./artifact/twgsl.js
-             cp ./Core/twgsl/twgsl.wasm ./artifact/twgsl.wasm
+             cp ./Core/twgsl/twgsl.js ../twgsl/artifact/twgsl.js
+             cp ./Core/twgsl/twgsl.wasm ../twgsl/artifact/twgsl.wasm
       - name: Upload TWGSL artifact Folder
         uses: actions/upload-artifact@v2
         with:
           name: 'TWGSL'
-          path: twgsl_build/artifact
+          path: artifact
