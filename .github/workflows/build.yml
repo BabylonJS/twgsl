@@ -14,21 +14,18 @@ jobs:
       - name: Clone/install emsdk
         run: |
              cd ..
-             pwd
              git clone https://github.com/emscripten-core/emsdk.git
              cd emsdk
              ./emsdk install latest
       - name: Clone DepotTools
         run: |
              cd ..
-             pwd
              git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
       - name: Build
         run: |
-             pwd
              cd ../emsdk
              ./emsdk activate latest
-             source "emsdk.sh"
+             source "emsdk_env.sh"
              cd ../depot-tools
              export PATH=$(pwd):$PATH
              cd ..
