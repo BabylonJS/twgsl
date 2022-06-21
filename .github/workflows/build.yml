@@ -37,11 +37,18 @@ jobs:
              mkdir twgsl_build
              cd twgsl_build
              emcmake cmake ../twgsl
-             emmake make twgsl
-             ls -a Core/twgsl
+             #emmake make twgsl
+             ls -l -a Core/twgsl
+             pwd
              mkdir ../artifact
+             echo a > ./Core/twgsl/twgsl.js
+             echo a > ./Core/twgsl/twgsl.wasm
              cp ./Core/twgsl/twgsl.js ../artifact/twgsl.js
              cp ./Core/twgsl/twgsl.wasm ../artifact/twgsl.wasm
+             ls -l -a ../artifact
+      - name: test paths
+        run: |
+             ls -l -a -R
       - name: Upload TWGSL artifact Folder
         uses: actions/upload-artifact@v2
         with:
