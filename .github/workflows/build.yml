@@ -34,8 +34,8 @@ jobs:
              cd ../../..
              mkdir twgsl_build
              cd twgsl_build
-             emcmake cmake ../twgsl
-             emmake make twgsl -DCMAKE_CXX_FLAGS="-s ALLOW_MEMORY_GROWTH=1"
+             emcmake cmake ../twgsl -DCMAKE_CXX_FLAGS="-s ALLOW_MEMORY_GROWTH=1"
+             emmake make twgsl
              mkdir ../twgsl/artifact
              cp ./Core/twgsl/twgsl.js ../twgsl/artifact/twgsl.js
              cp ./Core/twgsl/twgsl.wasm ../twgsl/artifact/twgsl.wasm
