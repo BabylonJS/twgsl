@@ -11,6 +11,7 @@ jobs:
         run: |
              git submodule update --init --recursive
              git submodule update --remote --merge
+             git submodule update --progress --init --recursive --force --remote -- "Dependencies/tint"
       - name: Clone/install emsdk
         run: |
              cd ..
