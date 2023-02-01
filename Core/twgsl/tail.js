@@ -10,7 +10,8 @@ return Module;
     else      root["twgsl"] = factory();
   })(typeof self !== "undefined" ? self : typeof global !== "undefined" ? global : this, () => {
     const initialize = (wasmPath) => {
-      wasmPath = wasmPath || 'twgsl.wasm'      return new Promise(resolve => {
+      wasmPath = wasmPath || 'twgsl.wasm'
+      return new Promise(resolve => {
           Module({
               locateFile() {
                   return wasmPath;
