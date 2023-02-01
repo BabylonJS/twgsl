@@ -17,7 +17,7 @@ jobs:
              cd ..
              git clone https://github.com/emscripten-core/emsdk.git
              cd emsdk
-             ./emsdk install 3.1.24
+             ./emsdk install latest
       - name: Clone DepotTools
         run: |
              cd ..
@@ -25,7 +25,7 @@ jobs:
       - name: Build
         run: |
              cd ../emsdk
-             ./emsdk activate 3.1.24
+             ./emsdk activate latest
              source "emsdk_env.sh"
              cd ../depot_tools
              export PATH=$(pwd):$PATH
