@@ -170,7 +170,7 @@ void spirv_to_wgsl(const void* bytes, int length) {
     }
     
     tint::wgsl::writer::Options options{};
-    auto result = tint::wgsl::writer::Generate(&program, options);
+    auto result = tint::wgsl::writer::Generate(program, options);
 
     return_string(result.wgsl.data(), result.wgsl.size());
 }
