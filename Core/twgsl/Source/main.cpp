@@ -162,15 +162,15 @@ void spirv_to_wgsl(const void* bytes, int length) {
     spirv.resize(length / sizeof(uint32_t));
     std::memcpy(spirv.data(), bytes, length);
 
-    tint::Program program{tint::reader::spirv::Parse(spirv)};
+    tint::Program program{tint::spirv::reader::Parse(spirv)};
 
     for (const auto& message : program.Diagnostics())
     {
         std::cout << message.message << std::endl << std::endl;
     }
     
-    tint::writer::wgsl::Options options{};
-    auto result = tint::writer::wgsl::Generate(&program, options);
+    tint::wgsl::writer::Options options{};
+    auto result = tint::wgsl::writer::Generate(&program, options);
 
     return_string(result.wgsl.data(), result.wgsl.size());
 }
