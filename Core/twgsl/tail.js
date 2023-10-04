@@ -20,7 +20,7 @@ return Module;
                   var twgsl = this;
                   var wgsl = "";
                   var textDecoder = new TextDecoder();
-                  var convertSpirV2WGSL = (code) => {
+                  var convertSpirV2WGSL = (code, disableUniformityAnalysis) => {
                     if (!twgsl._return_string_callback) {
                         twgsl._return_string_callback = (data, length) => {
                             const bytes = new Uint8ClampedArray(twgsl.HEAPU8.subarray(data, data + length));
@@ -29,7 +29,7 @@ return Module;
                     }
                     let addr = twgsl._malloc(code.byteLength);
                     twgsl.HEAPU32.set(code, addr / 4);
-                    twgsl._spirv_to_wgsl(addr, code.byteLength);
+                    twgsl._spirv_to_wgsl(addr, code.byteLength, disableUniformityAnalysis);
                     twgsl._free(addr);
                     return wgsl;
                   };
