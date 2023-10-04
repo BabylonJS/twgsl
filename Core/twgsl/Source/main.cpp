@@ -6,7 +6,7 @@
 extern "C"
 {
     void test();
-    void spirv_to_wgsl(const void* bytes, int length);
+    void spirv_to_wgsl(const void* bytes, int length, bool disableUniformityAnalysis = false);
     
     // Callback to JavaScript
     extern void return_string(const void* data, int length);
@@ -157,12 +157,14 @@ void test()
     std::cout << "Stopping." << std::endl;
 }
 
-void spirv_to_wgsl(const void* bytes, int length) {
+void spirv_to_wgsl(const void* bytes, int length, bool disableUniformityAnalysis) {
     std::vector<uint32_t> spirv{};
     spirv.resize(length / sizeof(uint32_t));
     std::memcpy(spirv.data(), bytes, length);
 
-    tint::Program program{tint::spirv::reader::Read(spirv)};
+    tint::spirv::reader::Options& options = {};
+    options.allow_non_uniform_derivatives = disableUniformityAnalysis;
+    tint::Program program{tint::spirv::reader::Read(spirv, options)};
 
     for (const auto& message : program.Diagnostics())
     {
