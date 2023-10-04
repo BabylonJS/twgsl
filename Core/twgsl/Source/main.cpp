@@ -162,18 +162,18 @@ void spirv_to_wgsl(const void* bytes, int length, bool disableUniformityAnalysis
     spirv.resize(length / sizeof(uint32_t));
     std::memcpy(spirv.data(), bytes, length);
 
-    tint::spirv::reader::Options& options = {};
+    tint::spirv::reader::Options readerOptions = {};
     options.allow_non_uniform_derivatives = disableUniformityAnalysis;
-    tint::Program program{tint::spirv::reader::Read(spirv, options)};
+    tint::Program program{tint::spirv::reader::Read(spirv, readerOptions)};
 
     for (const auto& message : program.Diagnostics())
     {
         std::cout << message.message << std::endl << std::endl;
     }
     
-    tint::wgsl::writer::Options options{};
+    tint::wgsl::writer::Options writerOptions{};
 
-    auto result = tint::wgsl::writer::Generate(program, options);
+    auto result = tint::wgsl::writer::Generate(program, writerOptions);
 
     return_string(result->wgsl.data(), result->wgsl.size());
 }
