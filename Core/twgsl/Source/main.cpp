@@ -163,7 +163,7 @@ void spirv_to_wgsl(const void* bytes, int length, bool disableUniformityAnalysis
     std::memcpy(spirv.data(), bytes, length);
 
     tint::spirv::reader::Options readerOptions = {};
-    options.allow_non_uniform_derivatives = disableUniformityAnalysis;
+    readerOptions.allow_non_uniform_derivatives = disableUniformityAnalysis;
     tint::Program program{tint::spirv::reader::Read(spirv, readerOptions)};
 
     for (const auto& message : program.Diagnostics())
