@@ -14,7 +14,7 @@ jobs:
              git submodule update --progress --init --recursive --force --remote -- "Dependencies/tint"
       - name: Python package
         run: |
-             sudo apt-get install --reinstall python-pkg-resources
+             pip install --upgrade setuptools
       - name: Clone/install emsdk
         run: |
              cd ..
