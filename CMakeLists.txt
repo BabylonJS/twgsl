@@ -7,7 +7,6 @@ add_subdirectory(Dependencies)
 target_compile_options(SPIRV-Tools-static PRIVATE -Oz)
 target_compile_options(SPIRV-Tools-opt PRIVATE -Oz)
 target_compile_options(tint_api PRIVATE -Oz)
+target_compile_options(tint_utils_system PRIVATE "-Wno-disabled-macro-expansion")
 
 add_subdirectory(Core)
-
-add_compile_options(-Wno-disabled-macro-expansion)
