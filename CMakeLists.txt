@@ -9,3 +9,5 @@ target_compile_options(SPIRV-Tools-opt PRIVATE -Oz)
 target_compile_options(tint_api PRIVATE -Oz)
 
 add_subdirectory(Core)
+
+add_compile_options(-Wno-disabled-macro-expansion)
