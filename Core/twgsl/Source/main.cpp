@@ -166,7 +166,7 @@ void spirv_to_wgsl(const void* bytes, int length, bool disableUniformityAnalysis
     readerOptions.allow_non_uniform_derivatives = disableUniformityAnalysis;
     tint::Program program{tint::spirv::reader::Read(spirv, readerOptions)};
 
-    std::cout << program.Diagnostics().str() << std::endl;
+    std::cout << program.Diagnostics().Str() << std::endl;
     
     tint::wgsl::writer::Options writerOptions{};
 
