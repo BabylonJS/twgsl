@@ -34,8 +34,8 @@ jobs:
              source "emsdk_env.sh"
              cd ../depot_tools
              export PATH=$(pwd):$PATH
-             cd ../twgsl/Dependencies/Tint
-             cp standalone.gclient .gclient
+             cd ../twgsl/Dependencies/dawn
+             cp scripts/standalone.gclient .gclient
              gclient sync
              cd ../../..
              mkdir twgsl_build
