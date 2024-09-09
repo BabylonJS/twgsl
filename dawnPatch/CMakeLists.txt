@@ -178,7 +178,7 @@ option(TINT_BUILD_IR_BINARY "Build IR binary format support" ${TINT_DEFAULT_BUIL
 option(TINT_BUILD_FUZZERS "Build fuzzers" OFF)
 option(TINT_BUILD_IR_FUZZER "Build IR fuzzer" OFF)
 option(TINT_BUILD_BENCHMARKS "Build Tint benchmarks" OFF)
-option(TINT_BUILD_TESTS "Build tests" ON)
+option(TINT_BUILD_TESTS "Build tests" OFF)
 option(TINT_BUILD_AS_OTHER_OS "Override OS detection to force building of *_other.cc files" OFF)
 option(TINT_BUILD_TINTD "Build the WGSL language server" OFF)
 option(TINT_ENABLE_BREAK_IN_DEBUGGER "Enable tint::debugger::Break()" OFF)
