@@ -44,6 +44,7 @@ jobs:
              mkdir twgsl_build
              cd twgsl_build
              emcmake cmake ../twgsl
+             emmake make all
              emmake make twgsl
              mkdir ../twgsl/artifact
              cp ./Core/twgsl/twgsl.js ../twgsl/artifact/twgsl.js
