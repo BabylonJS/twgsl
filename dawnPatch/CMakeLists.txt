@@ -73,7 +73,7 @@ if (CMAKE_SYSTEM_NAME MATCHES "Emscripten")
   # Only the samples are supported for Emscripten at the moment.
   # TODO(crbug.com/42240181): Make dawn_end2end_tests work too.
   set(ENABLE_EMSCRIPTEN ON)
-  set(BUILD_SAMPLES ON)
+  set(BUILD_SAMPLES OFF)
   set(ENABLE_NULL OFF)
 elseif (WIN32)
   set(ENABLE_D3D11 ON)
@@ -368,13 +368,13 @@ add_subdirectory(src/utils)
   add_subdirectory(src/tint)
 #endif()
 set(BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS_SAVED})
-if (DAWN_ENABLE_D3D11 OR DAWN_ENABLE_D3D12 OR DAWN_ENABLE_METAL OR DAWN_ENABLE_NULL OR DAWN_ENABLE_DESKTOP_GL OR DAWN_ENABLE_OPENGLES OR DAWN_ENABLE_VULKAN OR DAWN_ENABLE_EMSCRIPTEN)
-    add_subdirectory(generator)
-    # Note that we must add Emscripten directory first to ensure the correct
-    # headers will be exported upwards.
-    add_subdirectory(src/emdawnwebgpu)
-    add_subdirectory(src/dawn)
-endif()
+#if (DAWN_ENABLE_D3D11 OR DAWN_ENABLE_D3D12 OR DAWN_ENABLE_METAL OR DAWN_ENABLE_NULL OR DAWN_ENABLE_DESKTOP_GL OR DAWN_ENABLE_OPENGLES OR DAWN_ENABLE_VULKAN OR DAWN_ENABLE_EMSCRIPTEN)
+#    add_subdirectory(generator)
+#    # Note that we must add Emscripten directory first to ensure the correct
+#    # headers will be exported upwards.
+#    add_subdirectory(src/emdawnwebgpu)
+#    add_subdirectory(src/dawn)
+#endif()
 ################################################################################
 # Samples
 ################################################################################
