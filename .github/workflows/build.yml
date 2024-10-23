@@ -45,7 +45,7 @@ jobs:
              cp ./Core/twgsl/twgsl.js ../twgsl/artifact/twgsl.js
              cp ./Core/twgsl/twgsl.wasm ../twgsl/artifact/twgsl.wasm
       - name: Upload TWGSL artifact Folder
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: 'TWGSL'
           path: artifact
