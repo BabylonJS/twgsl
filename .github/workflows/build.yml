@@ -11,9 +11,14 @@ jobs:
         continue-on-error: true
         run: |
              git submodule update --init --recursive --depth 1 --force
+             #git submodule update --remote --merge --depth 1
+             #git submodule update --progress --init --force --remote -- "Dependencies/dawn" --depth 1
       - name: Python package
         run: |
              pip install --upgrade setuptools
+      - name: Patch dawn
+        run: |
+             yes | cp dawnPatch/CMakeLists.txt Dependencies/dawn/CMakeLists.txt
       - name: Clone/install emsdk
         run: |
              cd ..
