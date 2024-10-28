@@ -475,7 +475,7 @@ add_subdirectory(src/tint)
 set(BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS_SAVED})
 
 if (DAWN_ENABLE_D3D11 OR DAWN_ENABLE_D3D12 OR DAWN_ENABLE_METAL OR DAWN_ENABLE_NULL OR DAWN_ENABLE_DESKTOP_GL OR DAWN_ENABLE_OPENGLES OR DAWN_ENABLE_VULKAN OR DAWN_ENABLE_EMSCRIPTEN)
-    add_subdirectory(generator)
+#    add_subdirectory(generator)
 #    # Note that we must add Emscripten directory first to ensure the correct
 #    # headers will be exported upwards.
 #    add_subdirectory(src/emdawnwebgpu)
