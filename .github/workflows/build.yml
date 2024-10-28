@@ -16,9 +16,9 @@ jobs:
       - name: Python package
         run: |
              pip install --upgrade setuptools
-      - name: Patch dawn
-        run: |
-             yes | cp dawnPatch/CMakeLists.txt Dependencies/dawn/CMakeLists.txt
+#      - name: Patch dawn
+#        run: |
+#             yes | cp dawnPatch/CMakeLists.txt Dependencies/dawn/CMakeLists.txt
       - name: Clone/install emsdk
         run: |
              cd ..
