@@ -19,6 +19,7 @@ jobs:
       - name: Patch dawn
         run: |
              yes | cp dawnPatch/CMakeLists.txt Dependencies/dawn/CMakeLists.txt
+             yes | cp dawnPatch/CMakeLists-dependencies.txt Dependencies/dawn/third_party/CMakeLists.txt
       - name: Clone/install emsdk
         run: |
              cd ..
