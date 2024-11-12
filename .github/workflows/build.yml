@@ -11,8 +11,6 @@ jobs:
         continue-on-error: true
         run: |
              git submodule update --init --recursive --depth 1 --force
-             #git submodule update --remote --merge --depth 1
-             #git submodule update --progress --init --force --remote -- "Dependencies/dawn" --depth 1
       - name: Python package
         run: |
              pip install --upgrade setuptools
@@ -20,7 +18,6 @@ jobs:
         run: |
              yes | cp dawnPatch/CMakeLists.txt Dependencies/dawn/CMakeLists.txt
              yes | cp dawnPatch/CMakeLists-dependencies.txt Dependencies/dawn/third_party/CMakeLists.txt
-             #yes | cp dawnPatch/*.inc Dependencies/dawn/third_party/spirv-tools/src/source/
       - name: Clone/install emsdk
         run: |
              cd ..
@@ -46,7 +43,6 @@ jobs:
              mkdir twgsl_build
              cd twgsl_build
              emcmake cmake ../twgsl
-             #emmake make all
              emmake make twgsl
              mkdir ../twgsl/artifact
              cp ./Core/twgsl/twgsl.js ../twgsl/artifact/twgsl.js
