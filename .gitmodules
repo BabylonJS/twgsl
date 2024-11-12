@@ -1,3 +1,6 @@
 [submodule "Dependencies/tint"]
 	path = Dependencies/tint
 	url = https://dawn.googlesource.com/tint
+[submodule "Dependencies/dawn"]
+	path = Dependencies/dawn
+	url = https://dawn.googlesource.com/dawn

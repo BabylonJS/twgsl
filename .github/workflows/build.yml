@@ -8,13 +8,16 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2.3.3
       - name: Update submodule
+        continue-on-error: true
         run: |
-             git submodule update --init --recursive
-             git submodule update --remote --merge
-             git submodule update --progress --init --recursive --force --remote -- "Dependencies/tint"
+             git submodule update --init --recursive --depth 1 --force
       - name: Python package
         run: |
              pip install --upgrade setuptools
+      - name: Patch dawn
+        run: |
+             yes | cp dawnPatch/CMakeLists.txt Dependencies/dawn/CMakeLists.txt
+             yes | cp dawnPatch/CMakeLists-dependencies.txt Dependencies/dawn/third_party/CMakeLists.txt
       - name: Clone/install emsdk
         run: |
              cd ..
@@ -33,8 +36,8 @@ jobs:
              source "emsdk_env.sh"
              cd ../depot_tools
              export PATH=$(pwd):$PATH
-             cd ../twgsl/Dependencies/Tint
-             cp standalone.gclient .gclient
+             cd ../twgsl/Dependencies/dawn
+             cp scripts/standalone.gclient .gclient
              gclient sync
              cd ../../..
              mkdir twgsl_build
@@ -45,7 +48,7 @@ jobs:
              cp ./Core/twgsl/twgsl.js ../twgsl/artifact/twgsl.js
              cp ./Core/twgsl/twgsl.wasm ../twgsl/artifact/twgsl.wasm
       - name: Upload TWGSL artifact Folder
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: 'TWGSL'
           path: artifact
